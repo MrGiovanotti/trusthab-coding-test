@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang = "es" xmlns:th = "http://www.thymeleaf.org">
+<!-- ***** head ***** -->
+<head th:replace="fragments/_head.html :: head('Home')">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<a th:href="@{'/'}" style="font-size: 24px;">Home</a>
+	<div class="text-center mt-3 p-4" style="background: #f2f2f2">		
+		<div class="mb-2">
+			<form th:action="@{'/search-by-location'}" method="get">
+				<input type="text" name="location" required="required" placeholder="Filter by Location"/>
+				<input type="submit" value="Filter" class="btn btn-success" />
+			</form>			
+		</div>
+		<div class="mb-2">
+			<form th:action="@{'/search-by-parent-location'}" method="get">
+				<input type="text" name="parentLocation" required="required" placeholder="Filter by ParentLocation"/>
+				<input type="submit" value="Filter" class="btn btn-success" />
+			</form>			
+		</div>
+		<div class="mb-2">
+			<form th:action="@{'/search-by-connected'}" method="get">
+				<select name="connected" id="">
+					<option value="true">TRUE</option>
+					<option value="false">FALSE</option>
+				</select>
+				<input type="submit" value="Filter by Connected Status" class="btn btn-success" />
+			</form>			
+		</div>
+	</div>
+	<div class="container">
+		<div class="row my-5">
+			<div class="col">
+				<h1>Devices</h1>
+				<table id="devices-table" class="table table-striped animated fadeInLeft">
+				<caption>Devices</caption>
+					<thead>
+						<tr>
+							<th scope="col">Device</th>
+							<th scope="col">ConnectionStatus</th>
+							<th scope="col">SignalStrength</th>
+							<th scope="col">LocationName</th>
+							<th scope="col">UpdatedAt</th>
+							<th scope="col">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="device: ${devices}">
+							<td th:text=${device.id}></td>
+							<td th:if="${device.connected}"><em class="text-success fas fa-smile-wink"></em></td>
+							<td th:if="${!device.connected}"><em class="text-danger fas fa-sad-tear"></em></td>
+							<td>
+								<span th:if="${device.signal < -60}" class="badge badge-success" th:text="${device.signal}"></span>
+								<span th:if="${device.signal >= -60} AND ${device.signal < -30}" class="badge badge-warning" th:text="${device.signal}"></span>
+								<span th:if="${device.signal >= -30}" class="badge badge-danger" th:text="${device.signal}"></span>
+							</td>
+							<td th:text=${device.location}></td>
+							<td th:text=${device.updatedAt}></td>
+							<td><a th:href="@{/view (id=${device.id})}" class="btn btn-primary">View</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>	
+</body>
+</html>

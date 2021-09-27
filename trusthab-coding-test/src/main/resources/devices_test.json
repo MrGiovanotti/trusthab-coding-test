@@ -1,0 +1,20 @@
+[
+	{
+		"id": "58422422-9605-4b1d-b7d2-4e3a54a30c08",
+		"location": 10,
+		"mac_address": "01-14-AA-0E-11-B4",
+		"connected": true,
+		"parent_location": 97,
+		"updated_at": "2017-06-12T10:37:18Z",
+		"signal": -29
+	},
+	{
+		"id": "10f53d99-95d0-424d-bd09-97b7b35b60f9",
+		"location": 8,
+		"mac_address": "28-A4-93-C8-8C-66",
+		"connected": true,
+		"parent_location": 76,
+		"updated_at": "2017-12-27T07:59:02Z",
+		"signal": -5
+	}
+]

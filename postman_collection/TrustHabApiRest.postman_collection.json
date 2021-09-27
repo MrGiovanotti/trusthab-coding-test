@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "a7ba01ba-ee9a-4d09-8bd7-0a4bd9300c25",
+		"name": "TrustHabApiRest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/device/list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"device",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/device/view/58422422-9605-4b1d-b7d2-4e3a54a30c08",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"device",
+						"view",
+						"58422422-9605-4b1d-b7d2-4e3a54a30c08"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"58422422-9605-4b1d-b7d2-4e3a54a30cXX\",\n    \"location\": 10,\n    \"connected\": true,\n    \"signal\": -29,\n    \"mac_address\": \"01-14-AA-0E-11-B7\",\n    \"parent_location\": 97,\n    \"updated_at\": \"2017-06-12T10:37:18\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/device/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"device",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/device/delete/58422422-9605-4b1d-b7d2-4e3a54a30c08",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"device",
+						"delete",
+						"58422422-9605-4b1d-b7d2-4e3a54a30c08"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": \"10f53d99-95d0-424d-bd09-97b7b35b60f9\",\n        \"location\": 100,\n        \"connected\": true,\n        \"signal\": -5,\n        \"mac_address\": \"28-A4-93-C8-8C-66\",\n        \"parent_location\": 76,\n        \"updated_at\": \"2017-12-27T07:59:02\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/device/edit/58422422-9605-4b1d-b7d2-4e3a54a30c08",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"device",
+						"edit",
+						"58422422-9605-4b1d-b7d2-4e3a54a30c08"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

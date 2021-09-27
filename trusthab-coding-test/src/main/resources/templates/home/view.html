@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang = "es" xmlns:th = "http://www.thymeleaf.org">
+<!-- ***** head ***** -->
+<head th:replace="fragments/_head.html :: head('View device')">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row my-5">
+			<div class="col col-12 p-5" style="background: #f2f2f2; border-radius: 10px;">
+				<h4 th:text="${device.id}"></h4>
+				<div class="my-3">
+					<p class="small">Location</p>
+					<p th:text="${device.location}"></p>
+				</div>
+				<div class="my-3">
+					<p class="small">Connected</p>
+					<p th:if="${device.connected}"><em class="text-success fas fa-smile-wink"></em></p>
+					<p th:if="${!device.connected}"><em class="text-danger fas fa-sad-tear"></em></p>
+				</div>
+				<div class="my-3">
+					<p class="small">Signal</p>
+					<span th:if="${device.signal < -60}" class="badge badge-success" th:text="${device.signal}"></span>
+					<span th:if="${device.signal >= -60} AND ${device.signal < -30}" class="badge badge-warning" th:text="${device.signal}"></span>
+					<span th:if="${device.signal >= -30}" class="badge badge-danger" th:text="${device.signal}"></span>
+				</div>
+				<div class="my-3">
+					<p class="small">Mac Address</p>
+					<p th:text="${device.macAddress}"></p>					
+				</div>
+				<div class="my-3">
+					<p class="small">ParentLocation</p>
+					<p th:text="${device.parentLocation}"></p>					
+				</div>
+				<div class="my-3">
+					<p class="small">UpdatedAt</p>
+					<p th:text="${device.updatedAt}"></p>					
+				</div>
+			</div>
+			
+			<div class="col col-12 my-5 p-5" style="background: #f2f2f2; border-radius: 10px;">
+				<h4>Related Devices by Location</h4>
+				<table class="table table-striped">
+				<caption>Related Devices</caption>
+					<thead>
+						<tr>
+							<th scope="col">Device</th>
+							<th scope="col">ConnectionStatus</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="device: ${devices}">
+							<td th:text=${device.id}></td>
+							<td th:if="${device.connected}"><em class="text-success fas fa-smile-wink"></em></td>
+							<td th:if="${!device.connected}"><em class="text-danger fas fa-sad-tear"></em></td>							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
